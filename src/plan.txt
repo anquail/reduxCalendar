@@ -1,0 +1,9 @@
+Calendar container
+   Weekly container
+      day - add event button
+        events - delete event button
+
+
+In store:
+object of days which has events as objects
+{monday: {...events}, tuesday: {...events}}
