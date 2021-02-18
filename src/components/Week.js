@@ -20,8 +20,8 @@ const days = [
 
 class Week extends Component {
   render() {
-    const daysArr = days.map((el) => (
-      <Day day={el} events={this.props.weekId[el]} />
+    const daysArr = days.map((el, i) => (
+      <Day key={`Day ${i}`} day={el} events={this.props.weekId[el]} />
     ));
 
     return <div className="displayBox">{daysArr}</div>;

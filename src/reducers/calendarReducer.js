@@ -25,6 +25,20 @@ const calendarReducer = (state = initialState, action) => {
       };
     }
 
+    case types.DELETE_EVENT: {
+      let newArr = [...state[action.payload.day]];
+      const replace = [];
+      for (let i = 0; i < newArr.length; i++) {
+        if (newArr[i].id !== action.payload.eventId) {
+          replace.push(newArr[i]);
+        }
+      }
+      return {
+        ...state,
+        [action.payload.day]: replace,
+      };
+    }
+
     default: {
       console.log("calendar reducer fired");
       return state;

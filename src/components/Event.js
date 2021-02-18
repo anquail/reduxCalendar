@@ -7,7 +7,9 @@ export default function Event(props) {
       <p>{props.time}</p>
       <label>Name: </label>
       <p>{props.name}</p>
-      <button>X</button>
+      <button onClick={() => props.deleteEvent(props.eventId, props.day)}>
+        X
+      </button>
       <hr></hr>
     </div>
   );

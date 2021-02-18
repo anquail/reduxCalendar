@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Event from "./Event";
-import { addEvent } from "../actions/actions";
+import { addEvent, deleteEvent } from "../actions/actions";
 
 // const mapStateToProps = (state) => ({
 //   //
@@ -9,12 +9,19 @@ import { addEvent } from "../actions/actions";
 
 const mapDispatchToProps = (dispatch) => ({
   addEvent: (dayId) => dispatch(addEvent(dayId)),
-  //   deleteEvent:
+  deleteEvent: (eventId, day) => dispatch(deleteEvent(eventId, day)),
 });
 
 function Day(props) {
-  const eventArr = props.events.map((el) => (
-    <Event time={el.timeStr} name={el.name} />
+  const eventArr = props.events.map((el, i) => (
+    <Event
+      key={`event ${i}`}
+      time={el.timeStr}
+      name={el.name}
+      day={props.day}
+      eventId={el.id}
+      deleteEvent={props.deleteEvent}
+    />
   ));
   return (
     <div className="marketBox">
